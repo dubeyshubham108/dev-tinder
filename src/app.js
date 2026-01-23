@@ -4,8 +4,12 @@ const app = express();
 const User = require("./models/user");
 const { validateSignupData } = require('./utils/validation');
 const cookieParser = require('cookie-parser');
+const cors = require("cors");
 
-
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true //even if we are not on https we can send the cookies
+}));
 app.use(express.json());
 app.use(cookieParser());
 
